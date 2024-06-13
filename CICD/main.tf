@@ -1,7 +1,7 @@
 module "jenkins" {
   source  = "terraform-aws-modules/ec2-instance/aws"
   name = "jenkins-tf"    # give only backend or var.common_tags.Component
-  instance_type          = "t3.micro"
+  instance_type          = "t3.small"
   vpc_security_group_ids = ["sg-0901b3bc038adbb53"] 
   # convert StringList to list and get first element
   subnet_id = "subnet-02eef0a1b1c30ffa4"
@@ -16,10 +16,10 @@ module "jenkins" {
   )
 }
 
-module "jenkins-agent" {
+module "jenkins_agent" {
   source  = "terraform-aws-modules/ec2-instance/aws"
   name = "jenkins-agent"    
-  instance_type          = "t3.micro"
+  instance_type          = "t3.small"
   vpc_security_group_ids = ["sg-0901b3bc038adbb53"] 
   # convert StringList to list and get first element
   subnet_id = "subnet-02eef0a1b1c30ffa4"
